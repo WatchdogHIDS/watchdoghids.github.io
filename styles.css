@@ -1,321 +1,320 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
 }
 
 a {
-    text-decoration: none;
-    color: #0066cc;
+  text-decoration: none;
+  color: #0066cc;
 }
 
-
 img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 header {
-    background-color: #fff;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-    margin-bottom: 1rem;
-    color: #333;
+  margin-bottom: 1rem;
+  color: #333;
 }
 
 nav ul {
-    display: flex;
-    list-style: none;
+  display: flex;
+  list-style: none;
 }
 
 nav ul li {
-    margin-right: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 nav ul li a {
-    padding: 0.5rem;
-    color: #333;
-    font-weight: 500;
+  padding: 0.5rem;
+  color: #333;
+  font-weight: 500;
 }
-
-
 
 nav ul li a.active {
-    font-weight: bold;
-    color: #0066cc;
-    border-bottom: 2px solid #0066cc;
+  font-weight: bold;
+  color: #0066cc;
+  border-bottom: 2px solid #0066cc;
 }
 
-
 main {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
 }
 
 section {
-    margin-bottom: 3rem;
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 section h2 {
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #eee;
-    color: #333;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+  color: #333;
 }
 
 section h3 {
-    margin-bottom: 1rem;
-    color: #0066cc;
+  margin-bottom: 1rem;
+  color: #0066cc;
 }
 
 .content-container {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 2.5rem;
-    gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  gap: 2rem;
 }
 
-
 .content-container.reverse {
-    flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 .text-content {
-    flex: 2;
-    min-width: 300px;
+  flex: 2;
+  min-width: 300px;
 }
 
 .text-content ul {
-    margin-left: 1.5rem;
-    margin-top: 1rem;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
 }
 
 .text-content ul li {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .image-content {
-    flex: 1;
-    min-width: 250px;
-    max-width: 400px;
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
 }
 
-
 .team-member {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 3rem;
-    gap: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #eee;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #eee;
 }
 
 .team-member:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .team-member.reverse {
-    flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
-
-
 .member-image {
-    flex: 1;
-    min-width: 250px;
-    max-width: 300px;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
 }
 
 .member-image img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .member-bio {
-    flex: 2;
-    min-width: 300px;
+  flex: 2;
+  min-width: 300px;
 }
 
 .member-bio h3 {
-    margin-bottom: 1rem;
-    color: #0066cc;
+  margin-bottom: 1rem;
+  color: #0066cc;
 }
 
 .contact-info {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid #eee;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
 }
 
-
 .contact-info p {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .tutorial-section {
-    margin-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .tutorial-content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
-
-
 .tutorial-text {
-    flex: 2;
-    min-width: 300px;
+  flex: 2;
+  min-width: 300px;
+}
+
+.tutorial-text h3 {
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.tutorial-text h4 {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .tutorial-image {
-    flex: 1;
-    min-width: 250px;
-    max-width: 400px;
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
 }
 
 .download-section {
-    margin-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .download-content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .download-info {
-    flex: 2;
-    min-width: 300px;
+  flex: 2;
+  min-width: 300px;
 }
 
 .download-image {
-    flex: 1;
-    min-width: 250px;
-    max-width: 400px;
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
 }
 
-
 .download-button {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #0066cc;
-    color: white;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: background-color 0.3s;
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #0066cc;
+  color: white;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
 .download-button:hover {
-    background-color: #0055aa;
-    text-decoration: none;
+  background-color: #0055aa;
+  text-decoration: none;
 }
 
-
 .version-list {
-    list-style: none;
+  list-style: none;
 }
 
 .version-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eee;
 }
 
 .version-list li:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .version-name {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-
 .version-date {
-    color: #666;
+  color: #666;
 }
 
 .version-download {
-    padding: 0.25rem 0.75rem;
-    background-color: #f0f0f0;
-    border-radius: 3px;
-    font-size: 0.9rem;
+  padding: 0.25rem 0.75rem;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  font-size: 0.9rem;
 }
 
 .version-download:hover {
-    background-color: #e0e0e0;
+  background-color: #e0e0e0;
 }
 
 footer {
-    background-color: #fff;
-    text-align: center;
-    padding: 1.5rem;
-    margin-top: 2rem;
-    border-top: 1px solid #eee;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-top: 1px solid #eee;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
 }
 
-
 @media (max-width: 768px) {
+  .team-member,
+  .team-member.reverse,
+  .content-container,
+  .content-container.reverse,
+  .tutorial-content,
+  .download-content {
+    flex-direction: column;
+  }
 
-    .team-member,
-    .team-member.reverse,
-    .content-container,
-    .content-container.reverse,
-    .tutorial-content,
-    .download-content {
-        flex-direction: column;
-    }
+  .member-image,
+  .image-content,
+  .tutorial-image,
+  .download-image {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
 
-    .member-image,
-    .image-content,
-    .tutorial-image,
-    .download-image {
-        max-width: 100%;
-        margin-bottom: 1rem;
-    }
-    
+  .version-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 0;
+  }
 
-    .version-list li {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem 0;
-    }
+  .version-date,
+  .version-download {
+    margin-top: 0.5rem;
+  }
 
-    .version-date,
-    .version-download {
-        margin-top: 0.5rem;
-    }
+  nav ul {
+    flex-direction: column;
+  }
 
-    nav ul {
-        flex-direction: column;
-    }
-
-    nav ul li {
-        margin-right: 0;
-        margin-bottom: 0.5rem;
-    }
+  nav ul li {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
 }

@@ -23,13 +23,45 @@
             <h2>User Tutorial</h2>
 
             <div class="tutorial-section">
-                <h3>Getting Started</h3>
                 <div class="tutorial-content">
-                    <div class="tutorial-text">
-                        <p>[Provide a quick summary of how a user would use your system.]</p>
-                    </div>
-                    <div class="tutorial-image">
-                        <img src="images/tutorial-1.png" alt="images to help guide maybe">
+                  <div class="tutorial-text">
+                      <h3 id="central-server">Central Server</h3>
+                        <p>Inside the <code>node-server</code> dir, copy the <code>.env.example</code> to <code>.env</code> and fill with appropriate values
+                        Inside the <code>analysis-engine</code> dir, create a <code>.env</code> file
+                        To run with a unified central server, change the <code>DB_HOST</code> to <code>mariadb</code> and the <code>HAE_HOST</code> to <code>rust-microservice</code>
+                        If you would like email notifications, provide credentials for you desired mailserver
+                        Then run:</p>
+                        <p><code>docker-compose up --build -d</code></p>
+                        <p>You can now register endpoints via the Watchdog UI Admin screen
+                        To reset the DB, run either <code>db_reset.ps1</code> (on Windows) or <code>db_reset.sh</code> (On Linux).</p>
+                        <p>   </p>
+                      <h3 id="endpoints">Endpoints</h3>
+                        <h4 id="dependencies">Dependencies</h4>
+                        <p><code>pbpcap</code></p>
+                        <p><code>cjson</code></p>
+                        <p><code>uthash</code></p>
+                        <p><code>openssl</code></p>
+                        <p>Make sure to install the above before attempting to build. Should all be in your
+                        distros package manager:
+                        <code>sudo pacman -S libpcap cjson uthash openssl</code><br><code>sudo apt install libpcap-dev libcjson-dev uthash-dev libssl-dev</code></p>
+                      <h4 id="compile">Compile</h4>
+                        <p>Build using <code>make</code></p>
+                      <h4 id="installing">Installing</h4>
+                        <p><code>make install</code> can be run to build, install, enable, and start the systemd
+                        service.</p>
+                        <h4 id="running-without-install-">Running (without install)</h4>
+                        <p><code>make run</code> will build and run the program.</p>
+                        <p><code>make run -r</code> will remove all config and clean the cache</p>
+                        <p><code>make run -s</code> will run the setup wizard to pair with the central server and
+                        generate a config</p>
+                      <h4 id="deleting">Deleting</h4>
+                        <p><code>make remove</code> can be run to delete the systemd service as well as an referenced
+                        files. make clean will delete all compile objects and binaries</p>
+                        <h4 id="config">Config</h4>
+                        <p>The config file for the endpoint is stored at <code>/etc/watchdog-endpoint/config</code>.</p>
+                        <p>On first run (or if you delete the config file) it will generate a config with
+                        the default options. You can edit the options as you like, just remeber to
+                        systemctl restart watchdog-endpoint to make sure the changes are applied.</p>
                     </div>
                 </div>
             </div>
