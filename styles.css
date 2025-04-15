@@ -306,6 +306,11 @@ footer {
     margin-bottom: 1rem;
   }
 
+  .image-content-main {
+    margin-bottom: 1rem;
+    width: 100%; 
+  }
+
   .version-list li {
     flex-direction: column;
     align-items: flex-start;
@@ -325,4 +330,8 @@ footer {
     margin-right: 0;
     margin-bottom: 0.5rem;
   }
+}
+
+.indented {
+  text-indent: 2em;
 }
