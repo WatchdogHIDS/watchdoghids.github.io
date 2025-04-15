@@ -1,14 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Watchdog</title>
+    <title>Watchdog HIDS - About</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <h1>Watchdog HIDS</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">About</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="tutorial.html">Tutorial</a></li>
+                <li><a href="downloads.html">Downloads</a></li>
+            </ul>
+        </nav>
     </header>
-    
+
+    <main>
+        <section id="about">
+            <h2>About Watchdog HIDS</h2>
+
+            <div class="content-container">
+                <div class="text-content">
+                    <p class="indented">
+                        In today's digital landscape, it has become necessary for even the smallest networks to consider
+                        their security. Cyber attacks are becoming more common and easy to execute, which means that no
+                        system can rely on being too small to be a target. Unfortunately, many users choose not to
+                        address this issue, or perhaps not even realize it is an issue at all, leaving them vulnerable
+                        and without any way to identify cyber incidents when they inevitably occur. Attacks can leave
+                        networks unable to function properly and can even expose sensitive data. Current intrusion
+                        detection solutions are costly and complicated to set up, making them infeasible for most users.
+                        Watchdog aims to give these users an affordable and lightweight option for detecting unusual
+                        behavior on their machines (referred to as endpoints), enabling them to more effectively respond
+                        to cyber incidents.
+                    </p>
+                    <br>
+                    <p class="indented">
+                        Watchdog aims to provide a low-resource and cost-effective solution to this problem by
+                        implementing a Host Intrusion Detection System (HIDS). This system will continuously monitor
+                        devices for signs of intrusion, such as unusual behavior or unauthorized access attempts in
+                        secure file locations within home networks, small businesses, media servers, or self-hosted
+                        applications.
+                    </p>
+                    <br>
+                    <p class="indented">
+                        Detection methods will include heuristic analysis, identifying potential threats based on
+                        patterns such as unusually high CPU usage, spikes in outgoing network traffic, or other
+                        anomalous system behaviors that could indicate a security breach. This approach will require
+                        little configuration on the part of the end-user unless so desired. Since it will focus on the
+                        models and engine we create, it will serve as a sufficient launch point for most, if not all
+                        users. There will be the option to configure specifics of the program, such as exceptions to the
+                        heuristic checks, for the more advanced users who want to tinker with the specificity of the
+                        system and allow them to only be alerted of situations they deem dangerous. All of this data
+                        will be streamed in real-time to an internal, self-hosted central server, which will analyze it
+                        and create detailed reports about endpoint activity. Here, administrators can review incidents,
+                        manage incidents, and manually prioritize threats based on severity.
+                    </p>
+                    <br>
+                    <p class="indented">
+                        By creating a robust yet lightweight security layer, Watchdog empowers users to safeguard their
+                        digital assets without the need for extensive security expertise or significant financial
+                        investments. This project idea serves as an ideal capstone as it addresses a real-world problem,
+                        demonstrates technical proficiency in security systems, and showcases the ability to design and
+                        implement a solution tailored to specific user needs. Watchdog has the potential to make a
+                        tangible impact on the cybersecurity landscape for users who would not have normally made
+                        cybersecurity a priority, making it a compelling and worthwhile capstone project.
+                    </p>
+                    <br>
+                    <div class="text-content">
+                        <h3>Technologies Used in Watchdog</h3>
+
+                        <h4>Central Management Dashboard:</h4>
+                        <ul>
+                            <li>React web application</li>
+                            <li>Interface for data visualization and threat management</li>
+                            <li>Built with JavaScript and JSX</li>
+                        </ul>
+
+                        <h4>Endpoint Monitoring:</h4>
+                        <ul>
+                            <li>Linux: Custom systemd service written in C</li>
+                            <li>Windows: Custom Windows service written in C#</li>
+                            <li>Direct system interfaces (Linux syscalls and Windows API) for collecting information
+                            </li>
+                        </ul>
+
+                        <h4>Backend Infrastructure:</h4>
+                        <ul>
+                            <li>Node Express server to host API</li>
+                            <li>MariaDB database for the storage of endpoint data and event logs</li>
+                            <li>Custom heuristic analysis engine microservice written in Rust</li>
+                        </ul>
+                        <h4>Deployment:</h4>
+                        <ul>
+                            <li>Docker for easy, low-config containerized deployments</li>
+                        </ul>
+                        <h4>Development Tools:</h4>
+                        <ul>
+                            <li>Testing: Unit testing, Postman (API testing)</li>
+                            <li>Bug Tracking: GitLab issues</li>
+                            <li>Versioning: Git</li>
+                            <li>Issue Tracking: GitLab issues</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="image-content-main">
+                <h3>System Architecture</h3>
+                <img src="images/Watchdog_System_Architecture.jpg" alt="Project Overview image">
+            </div>
+
+            <div>
+                <div class="text-content">
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li><strong>Cross-Platform Endpoint Monitoring</strong><br>
+                            Lightweight agent services for Linux and Windows collect a wide range of system data with
+                            minimal resource impact.
+                        </li>
+                        <li><strong>Real-Time Endpoint Data Analysis</strong><br>
+                            Central server facilitates an advanced Heuristic Analysis Engine to process all data being
+                            collected from the endpoints and identify suspicious events and trends.
+                        </li>
+                        <li><strong>Security Event Alerts</strong><br>
+                            Generate records of potentially malicious behavior so they can be managed by users as soon
+                            as they occur.
+                        </li>
+                        <li><strong>Flexible Setup Configurations</strong><br>
+                            Microservice project structure allows users to setup Watchdog in accordance with their
+                            specific needs. Deploy each component on a dedicated machine or bundle all together on one
+                            host.
+                        </li>
+                        <li><strong>External Integrations</strong><br>
+                            Leverage trusted 3rd party security apis to provide more robust analysis and connect to an
+                            existing mail servers to extend alert capabilities. Watchdog is designed to plug into any
+                            user's existing ecosystem.
+                        </li>
+                        <li><strong>Open Source Security</strong><br>
+                            Use the Watchdog framework to develop custom analyzers that easily slot into the Heuristic
+                            Analysis Engine, or use the API to integrate with existing dashboards and tools.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>2025 Watchdog HIDS</p>
+    </footer>
 </body>
+
 </html>

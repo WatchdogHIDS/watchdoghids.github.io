@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Watchdog HIDS - Tutorial</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Watchdog HIDS</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">About</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="tutorial.html" class="active">Tutorial</a></li>
+                <li><a href="downloads.html">Downloads</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="tutorial">
+            <h2>User Tutorial</h2>
+
+            <div class="tutorial-section">
+                <div class="tutorial-content">
+                  <div class="tutorial-text">
+                      <h3 id="central-server">Central Server</h3>
+                        <p>Inside the <code>node-server</code> dir, copy the <code>.env.example</code> to <code>.env</code> and fill with appropriate values</p>
+                        <p>Inside the <code>analysis-engine</code> dir, create a <code>.env</code> file</p>
+                        <p>To run with a unified central server, change the <code>DB_HOST</code> to <code>mariadb</code> and the <code>HAE_HOST</code> to <code>rust-microservice</code></p>
+                        <p>If you would like email notifications, provide credentials for you desired mailserver
+                        Then run:</p>
+                        <p><code>docker-compose up --build -d</code></p>
+                        <p>You can now register endpoints via the Watchdog UI Admin screen</p>
+                        <p>To reset the DB, run either <code>db_reset.ps1</code> (on Windows) or <code>db_reset.sh</code> (On Linux).</p>
+                      <h3 id="linux-endpoint">Linux Endpoint</h3>
+                        <h4 id="dependencies">Dependencies</h4>
+                        <p><code>pbpcap</code></p>
+                        <p><code>cjson</code></p>
+                        <p><code>uthash</code></p>
+                        <p><code>openssl</code></p>
+                        <p>Make sure to install the above before attempting to build. Should all be in your
+                        distros package manager:<p/>
+                        <p><code>sudo pacman -S libpcap cjson uthash openssl</code></p>
+                        <p><code>sudo apt install libpcap-dev libcjson-dev uthash-dev libssl-dev</code></p>
+                        <h4 id="compile">Compile</h4>
+                          <p>Build using <code>make</code></p>
+                        <h4 id="installing">Installing</h4>
+                          <p><code>make install</code> can be run to build, install, enable, and start the systemd
+                          service.</p>
+                          <h4 id="running-without-install-">Running (without install)</h4>
+                          <p><code>make run</code> will build and run the program.</p>
+                          <p><code>make run -r</code> will remove all config and clean the cache</p>
+                          <p><code>make run -s</code> will run the setup wizard to pair with the central server and
+                          generate a config</p>
+                        <h4 id="deleting">Deleting</h4>
+                          <p><code>make remove</code> can be run to delete the systemd service as well as an referenced
+                          files. make clean will delete all compile objects and binaries</p>
+                          <h4 id="config">Config</h4>
+                          <p>The config file for the endpoint is stored at <code>/etc/watchdog-endpoint/config</code>.</p>
+                          <p>On first run (or if you delete the config file) it will generate a config with
+                          the default options. You can edit the options as you like, just remeber to
+                          systemctl restart watchdog-endpoint to make sure the changes are applied.</p>
+                      <h3 id="windows-endpoint">Windows Endpoint</h3>
+                        <h4 id="simple-install">Simple Install</h4>
+                          <p>Run the installer: <code>Watchdog-Endpoint-Setup.exe</code></p>
+                          <p>Verify the install: run <code>Get-Service -Name "Watchdog-Endpoint"</code> in PowerShell (as admin)</p>
+                        <h4 id="advanced-install">Advanced Install</h4>
+                          <h5 id="dependencies">Dependencies</h3>
+                            <a href="https://dotnet.microsoft.com/en-us/download">.NET SDK</a>
+                            <p>PowerShell (admin access)</p>
+                          <h5 id="build">Build</h5>
+                            <p>Use <code>dotnet publish</code> to compile:</p>
+                            <code>dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o "C:\Watchdog-Endpoint"</code>
+                            <p>This creates a single exe: <code>C:\Watchdog-Endpoint\</code></p>
+                          <h5 id="install">Install (Manually)</h5>
+                            <p>Run:</p>
+                            <code>sc.exe create "Watchdog-Endpoint" binPath= "\"C:\Watchdog-Endpoint\Watchdog-Endpoint.exe\"" start= auto</code>
+                            <code>start "Watchdog-Endpoint"</code>
+                          <h5 id="verify">Verify</h5>
+                            <code>Get-Service -Name "Watchdog-Endpoint"</code>
+                        <h4 id="uninstall">Uninstall</h4>
+                          <p>To remove the service, run:</p>
+                          <code>sc.exe delete "Watchdog-Endpoint"</code>
+                          <code>Remove-Item "C:\Program Files\Watchdog-Endpoint" -Recurse -Force</code>
+                        <h4 id="notes">Notes</h4>
+                          <p>The service must be installed with admin privileges</p>
+                          <p>If installation fails, check the Event Viewer (<code>eventvwr.msc</code>) for errors</p>
+                          <p>If running from source, ensure .NET Runtime is installed</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>2025 Watchdog HIDS</p>
+    </footer>
+</body>
+
+</html>
