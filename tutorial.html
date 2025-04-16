@@ -26,126 +26,129 @@
         <div class="tutorial-content">
           <div class="tutorial-text">
             <!-- Central Server Section -->
-            <h3 id="central-server">Central Server</h3>
-            <p>
-              Inside the <code>node-server</code> directory, copy the <code>.env.example</code> file to <code>.env</code> and fill it with appropriate values.
-            </p>
-            <p>
-              Inside the <code>analysis-engine</code> directory, create a <code>.env</code> file.
-            </p>
-            <p>
-              To run with a unified central server, change <code>DB_HOST</code> to <code>mariadb</code> and <code>HAE_HOST</code> to <code>rust-microservice</code>.
-            </p>
-            <p>
-              If you would like email notifications, provide credentials for your desired mailserver. Then run:
-            </p>
-            <pre><code>docker-compose up --build -d</code></pre>
-            <p>
-              You can now register endpoints via the Watchdog UI Admin screen.
-            </p>
-            <p>
-              To reset the database, run either <code>db_reset.ps1</code> (Windows) or <code>db_reset.sh</code> (Linux).
-            </p>
+            <details>
+              <summary>Central Server</summary>
+              <p>
+                Inside the <code>node-server</code> directory, copy the <code>.env.example</code> file to <code>.env</code> and fill it with appropriate values.
+              </p>
+              <p>
+                Inside the <code>analysis-engine</code> directory, create a <code>.env</code> file.
+              </p>
+              <p>
+                To run with a unified central server, change <code>DB_HOST</code> to <code>mariadb</code> and <code>HAE_HOST</code> to <code>rust-microservice</code>.
+              </p>
+              <p>
+                If you would like email notifications, provide credentials for your desired mailserver. Then run:
+              </p>
+              <pre><code>docker-compose up --build -d</code></pre>
+              <p>
+                You can now register endpoints via the Watchdog UI Admin screen.
+              </p>
+              <p>
+                To reset the database, run either <code>db_reset.ps1</code> (Windows) or <code>db_reset.sh</code> (Linux).
+              </p>
+            </details>
             
             <!-- Linux Endpoint Section -->
-            <h3 id="linux-endpoint">Linux Endpoint</h3>
-            <h4 id="linux-dependencies">Dependencies</h4>
-            <ul>
-              <li><code>pbpcap</code></li>
-              <li><code>cjson</code></li>
-              <li><code>uthash</code></li>
-              <li><code>openssl</code></li>
-            </ul>
-            <p>
-              Make sure to install the above dependencies before attempting to build. They should be available through your distribution's package manager:
-            </p>
-            <pre><code>sudo pacman -S libpcap cjson uthash openssl</code></pre>
-            <pre><code>sudo apt install libpcap-dev libcjson-dev uthash-dev libssl-dev</code></pre>
-            <h4 id="linux-compile">Compile</h4>
-            <p>
-              Build using:
-            </p>
-            <pre><code>make</code></pre>
-            <h4 id="linux-installing">Installing</h4>
-            <p>
-              To build, install, enable, and start the systemd service, run:
-            </p>
-            <pre><code>make install</code></pre>
-            <h4 id="linux-running">Running (without install)</h4>
-            <p>
-              To build and run the program without installing:
-            </p>
-            <pre><code>make run</code></pre>
-            <p>
-              To additionally remove config and clean cache:
-            </p>
-            <pre><code>make run -r</code></pre>
-            <p>
-              To run the setup wizard (pair with the central server and generate a config):
-            </p>
-            <pre><code>make run -s</code></pre>
-            <h4 id="linux-deleting">Deleting</h4>
-            <p>
-              To remove the systemd service and referenced files:
-            </p>
-            <pre><code>make remove</code></pre>
-            <p>
-              To clean compile objects and binaries:
-            </p>
-            <pre><code>make clean</code></pre>
-            <h4 id="linux-config">Config</h4>
-            <p>
-              The configuration file for the endpoint is stored at <code>/etc/watchdog-endpoint/config</code>.
-              On first run (or if you delete the file), a default config is generated.
-              Edit the options as needed and then run <code>systemctl restart watchdog-endpoint</code> to apply changes.
-            </p>
-            
+            <details>
+              <summary>Linux Endpoint</summary>
+              <h4 id="linux-dependencies">Dependencies</h4>
+                <p>- <code>pbpcap</code></p>
+                <p>- <code>cjson</code></p>
+                <p>- <code>uthash</code></p>
+                <p>- <code>openssl</code></p>
+              <p>
+                Make sure to install the above dependencies before attempting to build. They should be available through your distribution's package manager:
+              </p>
+              <pre><code>sudo pacman -S libpcap cjson uthash openssl</code></pre>
+              <pre><code>sudo apt install libpcap-dev libcjson-dev uthash-dev libssl-dev</code></pre>
+              <h4 id="linux-compile">Compile</h4>
+              <p>
+                Build using:
+              </p>
+              <pre><code>make</code></pre>
+              <h4 id="linux-installing">Installing</h4>
+              <p>
+                To build, install, enable, and start the systemd service, run:
+              </p>
+              <pre><code>make install</code></pre>
+              <h4 id="linux-running">Running (without install)</h4>
+              <p>
+                To build and run the program without installing:
+              </p>
+              <pre><code>make run</code></pre>
+              <p>
+                To additionally remove config and clean cache:
+              </p>
+              <pre><code>make run -r</code></pre>
+              <p>
+                To run the setup wizard (pair with the central server and generate a config):
+              </p>
+              <pre><code>make run -s</code></pre>
+              <h4 id="linux-deleting">Deleting</h4>
+              <p>
+                To remove the systemd service and referenced files:
+              </p>
+              <pre><code>make remove</code></pre>
+              <p>
+                To clean compile objects and binaries:
+              </p>
+              <pre><code>make clean</code></pre>
+              <h4 id="linux-config">Config</h4>
+              <p>
+                The configuration file for the endpoint is stored at <code>/etc/watchdog-endpoint/config</code>.
+                On first run (or if you delete the file), a default config is generated.
+                Edit the options as needed and then run <code>systemctl restart watchdog-endpoint</code> to apply changes.
+              </p>
+            </details>
             <!-- Windows Endpoint Section -->
-            <h3 id="windows-endpoint">Windows Endpoint</h3>
-            <h4 id="windows-simple-install">Simple Install</h4>
-            <p>
-              Run the installer:
-            </p>
-            <pre><code>Watchdog-Endpoint-Setup.exe</code></pre>
-            <p>
-              Verify the installation in PowerShell (as admin) with:
-            </p>
-            <pre><code>Get-Service -Name "Watchdog-Endpoint"</code></pre>
-            
-            <h4 id="windows-advanced-install">Advanced Install</h4>
-            <h5 id="windows-dependencies">Dependencies</h5>
-            <p>
-              Download the <a href="https://dotnet.microsoft.com/en-us/download">.NET SDK</a> and ensure you have PowerShell with administrative privileges.
-            </p>
-            <h5 id="windows-build">Build</h5>
-            <p>
-              Use <code>dotnet publish</code> to compile:
-            </p>
-            <pre><code>dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o "C:\Watchdog-Endpoint"</code></pre>
-            <p>
-              This creates a single executable at <code>C:\Watchdog-Endpoint\</code>.
-            </p>
-            <h5 id="windows-install">Install (Manually)</h5>
-            <p>
-              Run the following commands to create and start the service:
-            </p>
-            <pre><code>sc.exe create "Watchdog-Endpoint" binPath= "\"C:\Watchdog-Endpoint\Watchdog-Endpoint.exe\"" start= auto</code></pre>
-            <pre><code>start "Watchdog-Endpoint"</code></pre>
-            <h5 id="windows-verify">Verify</h5>
-            <p>
-              Confirm the service status with:
-            </p>
-            <pre><code>Get-Service -Name "Watchdog-Endpoint"</code></pre>
-            <h4 id="windows-uninstall">Uninstall</h4>
-            <p>
-              To remove the service, run:
-            </p>
-            <pre><code>sc.exe delete "Watchdog-Endpoint"</code></pre>
-            <pre><code>Remove-Item "C:\Program Files\Watchdog-Endpoint" -Recurse -Force</code></pre>
-            <h4 id="windows-notes">Notes</h4>
-            <p>
-              The service must be installed with administrative privileges. If the installation fails, check the Event Viewer (<code>eventvwr.msc</code>) for errors. If running from source, ensure that the .NET Runtime is installed.
-            </p>
+            <details>
+              <summary>Windows Endpoint</summary>
+              <h4 id="windows-simple-install">Simple Install</h4>
+              <p>
+                Run the installer:
+              </p>
+              <pre><code>Watchdog-Endpoint-Setup.exe</code></pre>
+              <p>
+                Verify the installation in PowerShell (as admin) with:
+              </p>
+              <pre><code>Get-Service -Name "Watchdog-Endpoint"</code></pre>
+              
+              <h4 id="windows-advanced-install">Advanced Install</h4>
+              <h5 id="windows-dependencies">Dependencies</h5>
+              <p>
+                Download the <a href="https://dotnet.microsoft.com/en-us/download">.NET SDK</a> and ensure you have PowerShell with administrative privileges.
+              </p>
+              <h5 id="windows-build">Build</h5>
+              <p>
+                Use <code>dotnet publish</code> to compile:
+              </p>
+              <pre><code>dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o "C:\Watchdog-Endpoint"</code></pre>
+              <p>
+                This creates a single executable at <code>C:\Watchdog-Endpoint\</code>.
+              </p>
+              <h5 id="windows-install">Install (Manually)</h5>
+              <p>
+                Run the following commands to create and start the service:
+              </p>
+              <pre><code>sc.exe create "Watchdog-Endpoint" binPath= "\"C:\Watchdog-Endpoint\Watchdog-Endpoint.exe\"" start= auto</code></pre>
+              <pre><code>start "Watchdog-Endpoint"</code></pre>
+              <h5 id="windows-verify">Verify</h5>
+              <p>
+                Confirm the service status with:
+              </p>
+              <pre><code>Get-Service -Name "Watchdog-Endpoint"</code></pre>
+              <h4 id="windows-uninstall">Uninstall</h4>
+              <p>
+                To remove the service, run:
+              </p>
+              <pre><code>sc.exe delete "Watchdog-Endpoint"</code></pre>
+              <pre><code>Remove-Item "C:\Program Files\Watchdog-Endpoint" -Recurse -Force</code></pre>
+              <h4 id="windows-notes">Notes</h4>
+              <p>
+                The service must be installed with administrative privileges. If the installation fails, check the Event Viewer (<code>eventvwr.msc</code>) for errors. If running from source, ensure that the .NET Runtime is installed.
+              </p>
+            </details>
           </div>
         </div>
       </article>

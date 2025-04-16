@@ -10,7 +10,7 @@
   --color-white: #fff;
   --color-border: #eee;
   --color-muted: #666;
-  
+
   /* Shadows & Borders */
   --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   --border-radius: 5px;
@@ -117,6 +117,15 @@ section h2 {
 section h3 {
   margin-bottom: var(--spacing-base);
   color: var(--color-primary);
+}
+
+details summary {
+  /*match h3*/
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: var(--spacing-base);
+  color: var(--color-primary);
+  cursor: pointer;
 }
 
 /* ================================
@@ -333,7 +342,7 @@ footer {
     flex-direction: column;
     gap: var(--spacing-base);
   }
-  
+
   nav ul li {
     margin-right: 0;
   }
