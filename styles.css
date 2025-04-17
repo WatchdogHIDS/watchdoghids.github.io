@@ -57,6 +57,11 @@ img {
   box-shadow: var(--box-shadow);
 }
 
+video {
+  width: 100%;
+  height: auto;
+}
+
 /* ================================
    Header & Navigation
    ================================ */
