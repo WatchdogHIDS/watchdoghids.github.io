@@ -1,102 +1,212 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-    <title>Watchdog HIDS - Tutorial</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watchdog HIDS - Tutorial</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <header>
-        <h1>Watchdog HIDS</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">About</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="tutorial.html" class="active">Tutorial</a></li>
-                <li><a href="downloads.html">Downloads</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <h1>Watchdog HIDS</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="tutorial.html" class="active">Tutorial</a></li>
+        <li><a href="downloads.html">Downloads</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <section id="tutorial">
-            <h2>User Tutorial</h2>
+  <main>
+    <section id="tutorial">
+      <h2>User Tutorial</h2>
+      <article class="tutorial-section">
+        <div class="tutorial-content">
+          <div class="tutorial-text">
+            <!-- Central Server Section -->
+            <details>
+              <summary>Central Server</summary>
+              <video controls>
+                <source src="videos/central-server-tutorial.mp4" type="video/mp4">
+                Your browser does not support the video tag
+              </video>
+              <h4 id="server-setup">Server Setup - Unified</h4>
+              <p>
+                As prerequisites, ensure you have Docker and Docker Compose installed on your system.
+              </p>
+              <p>
+                Inside the <code>node-server</code> and <code>analysis-engine</code> directories, create <code>.env</code> files using either the <code>.env.example</code> or by following the below documentation.
+              </p>
+              <p>
+                Then run: <code>docker-compose up --build -d</code>
+              </p>
+              <p>
+                By default a <code>root</code> user will be created with password <code>rootpassword</code>. This can be changed by changing line 188 in the <code>setup.sql</code> script.
+              </p>
+              <p>
+                You can now register endpoints via the Watchdog UI Admin screen.
+              </p>
+              <p>
+                To reset the database, run either <code>db_reset.ps1</code> (Windows) or <code>db_reset.sh</code> (Linux) and then rebuild the containers.
+              </p>
+            </details>
+            
+            <!-- Linux Endpoint Section -->
+            <details>
+              <summary>Linux Endpoint</summary>
+              <video controls>
+                <source src="videos/linux-endpoint-tutorial.mp4" type="video/mp4">
+                Your browser does not support the video tag
+              </video>
 
-            <div class="tutorial-section">
-                <div class="tutorial-content">
-                  <div class="tutorial-text">
-                      <h3 id="central-server">Central Server</h3>
-                        <p>Inside the <code>node-server</code> dir, copy the <code>.env.example</code> to <code>.env</code> and fill with appropriate values</p>
-                        <p>Inside the <code>analysis-engine</code> dir, create a <code>.env</code> file</p>
-                        <p>To run with a unified central server, change the <code>DB_HOST</code> to <code>mariadb</code> and the <code>HAE_HOST</code> to <code>rust-microservice</code></p>
-                        <p>If you would like email notifications, provide credentials for you desired mailserver
-                        Then run:</p>
-                        <p><code>docker-compose up --build -d</code></p>
-                        <p>You can now register endpoints via the Watchdog UI Admin screen</p>
-                        <p>To reset the DB, run either <code>db_reset.ps1</code> (on Windows) or <code>db_reset.sh</code> (On Linux).</p>
-                      <h3 id="linux-endpoint">Linux Endpoint</h3>
-                        <h4 id="dependencies">Dependencies</h4>
-                        <p><code>pbpcap</code></p>
-                        <p><code>cjson</code></p>
-                        <p><code>uthash</code></p>
-                        <p><code>openssl</code></p>
-                        <p>Make sure to install the above before attempting to build. Should all be in your
-                        distros package manager:<p/>
-                        <p><code>sudo pacman -S libpcap cjson uthash openssl</code></p>
-                        <p><code>sudo apt install libpcap-dev libcjson-dev uthash-dev libssl-dev</code></p>
-                        <h4 id="compile">Compile</h4>
-                          <p>Build using <code>make</code></p>
-                        <h4 id="installing">Installing</h4>
-                          <p><code>make install</code> can be run to build, install, enable, and start the systemd
-                          service.</p>
-                          <h4 id="running-without-install-">Running (without install)</h4>
-                          <p><code>make run</code> will build and run the program.</p>
-                          <p><code>make run -r</code> will remove all config and clean the cache</p>
-                          <p><code>make run -s</code> will run the setup wizard to pair with the central server and
-                          generate a config</p>
-                        <h4 id="deleting">Deleting</h4>
-                          <p><code>make remove</code> can be run to delete the systemd service as well as an referenced
-                          files. make clean will delete all compile objects and binaries</p>
-                          <h4 id="config">Config</h4>
-                          <p>The config file for the endpoint is stored at <code>/etc/watchdog-endpoint/config</code>.</p>
-                          <p>On first run (or if you delete the config file) it will generate a config with
-                          the default options. You can edit the options as you like, just remeber to
-                          systemctl restart watchdog-endpoint to make sure the changes are applied.</p>
-                      <h3 id="windows-endpoint">Windows Endpoint</h3>
-                        <h4 id="simple-install">Simple Install</h4>
-                          <p>Run the installer: <code>Watchdog-Endpoint-Setup.exe</code></p>
-                          <p>Verify the install: run <code>Get-Service -Name "Watchdog-Endpoint"</code> in PowerShell (as admin)</p>
-                        <h4 id="advanced-install">Advanced Install</h4>
-                          <h5 id="dependencies">Dependencies</h3>
-                            <a href="https://dotnet.microsoft.com/en-us/download">.NET SDK</a>
-                            <p>PowerShell (admin access)</p>
-                          <h5 id="build">Build</h5>
-                            <p>Use <code>dotnet publish</code> to compile:</p>
-                            <code>dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o "C:\Watchdog-Endpoint"</code>
-                            <p>This creates a single exe: <code>C:\Watchdog-Endpoint\</code></p>
-                          <h5 id="install">Install (Manually)</h5>
-                            <p>Run:</p>
-                            <code>sc.exe create "Watchdog-Endpoint" binPath= "\"C:\Watchdog-Endpoint\Watchdog-Endpoint.exe\"" start= auto</code>
-                            <code>start "Watchdog-Endpoint"</code>
-                          <h5 id="verify">Verify</h5>
-                            <code>Get-Service -Name "Watchdog-Endpoint"</code>
-                        <h4 id="uninstall">Uninstall</h4>
-                          <p>To remove the service, run:</p>
-                          <code>sc.exe delete "Watchdog-Endpoint"</code>
-                          <code>Remove-Item "C:\Program Files\Watchdog-Endpoint" -Recurse -Force</code>
-                        <h4 id="notes">Notes</h4>
-                          <p>The service must be installed with admin privileges</p>
-                          <p>If installation fails, check the Event Viewer (<code>eventvwr.msc</code>) for errors</p>
-                          <p>If running from source, ensure .NET Runtime is installed</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+              <h4 id="linux-dependencies">Dependencies</h4>
+                <p>- <code>pbpcap</code></p>
+                <p>- <code>cjson</code></p>
+                <p>- <code>uthash</code></p>
+                <p>- <code>openssl</code></p>
+              <p>
+                Make sure to install the above dependencies before attempting to build. They should be available through your distribution's package manager:
+              </p>
+              <pre><code>sudo pacman -S libpcap cjson uthash openssl</code></pre>
+              <pre><code>sudo apt install libpcap-dev libcjson-dev uthash-dev libssl-dev</code></pre>
+              <h4 id="linux-compile">Compile</h4>
+              <p>
+                Build using:
+              </p>
+              <pre><code>make</code></pre>
+              <h4 id="linux-installing">Installing</h4>
+              <p>
+                To build, install, enable, and start the systemd service, run:
+              </p>
+              <pre><code>make install</code></pre>
+              <h4 id="linux-running">Running (without install)</h4>
+              <p>
+                To build and run the program without installing:
+              </p>
+              <pre><code>make run</code></pre>
+              <p>
+                To additionally remove config and clean cache:
+              </p>
+              <pre><code>make run -r</code></pre>
+              <p>
+                To run the setup wizard (pair with the central server and generate a config):
+              </p>
+              <pre><code>make run -s</code></pre>
+              <h4 id="linux-deleting">Deleting</h4>
+              <p>
+                To remove the systemd service and referenced files:
+              </p>
+              <pre><code>make remove</code></pre>
+              <p>
+                To clean compile objects and binaries:
+              </p>
+              <pre><code>make clean</code></pre>
+              <h4 id="linux-config">Config</h4>
+              <p>
+                The configuration file for the endpoint is stored at <code>/etc/watchdog-endpoint/config</code>.
+                On first run (or if you delete the file), a default config is generated.
+                Edit the options as needed and then run <code>systemctl restart watchdog-endpoint</code> to apply changes.
+              </p>
+            </details>
 
-    <footer>
-        <p>2025 Watchdog HIDS</p>
-    </footer>
+            <!-- Windows Endpoint Section -->
+            <details>
+              <summary>Windows Endpoint</summary>
+              <h4 id="windows-simple-install">Simple Install</h4>
+              <p>
+                Run the installer:
+              </p>
+              <pre><code>Watchdog-Endpoint-Setup.exe</code></pre>
+              <p>
+                Verify the installation in PowerShell (as admin) with:
+              </p>
+              <pre><code>Get-Service -Name "Watchdog-Endpoint"</code></pre>
+              
+              <h4 id="windows-advanced-install">Advanced Install</h4>
+              <h5 id="windows-dependencies">Dependencies</h5>
+              <p>
+                Download the <a href="https://dotnet.microsoft.com/en-us/download">.NET SDK</a> and ensure you have PowerShell with administrative privileges.
+              </p>
+              <h5 id="windows-build">Build</h5>
+              <p>
+                Use <code>dotnet publish</code> to compile:
+              </p>
+              <pre><code>dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o "C:\Watchdog-Endpoint"</code></pre>
+              <p>
+                This creates a single executable at <code>C:\Watchdog-Endpoint\</code>.
+              </p>
+              <h5 id="windows-install">Install (Manually)</h5>
+              <p>
+                Run the following commands to create and start the service:
+              </p>
+              <pre><code>sc.exe create "Watchdog-Endpoint" binPath= "\"C:\Watchdog-Endpoint\Watchdog-Endpoint.exe\"" start= auto</code></pre>
+              <pre><code>start "Watchdog-Endpoint"</code></pre>
+              <h5 id="windows-verify">Verify</h5>
+              <p>
+                Confirm the service status with:
+              </p>
+              <pre><code>Get-Service -Name "Watchdog-Endpoint"</code></pre>
+              <h4 id="windows-uninstall">Uninstall</h4>
+              <p>
+                To remove the service, run:
+              </p>
+              <pre><code>sc.exe delete "Watchdog-Endpoint"</code></pre>
+              <pre><code>Remove-Item "C:\Program Files\Watchdog-Endpoint" -Recurse -Force</code></pre>
+              <h4 id="windows-notes">Notes</h4>
+              <p>
+                The service must be installed with administrative privileges. If the installation fails, check the Event Viewer (<code>eventvwr.msc</code>) for errors. If running from source, ensure that the .NET Runtime is installed.
+              </p>
+            </details>
+
+            <!-- .env  -->
+            <details>
+              <summary>Environment Configuration Files</summary>
+              <p>Some components of the Watchdog server can be configured using .env files. These are lists of the variable options and what they do</p>
+              <h4 id="env-node-server">Node Server</h4>
+              <h5>General Server Configs</h5>
+              <pre><code>PORT</code> - The port the node server should listen on</pre>
+              <pre><code>JWT_SECRET</code> - Secret key used for JWT authentication and signing</pre>
+              <h5>Database Configs</h5>
+              <pre><code>DB_HOST</code> - The host of the database</pre>
+              <pre><code>DB_USER</code> - The database username the server should use</pre>
+              <pre><code>DB_PASS</code> - The password of the database user specified</pre>
+              <pre><code>DB_NAME</code> - The name of the internal database containing the watchdog data</pre>
+              <h5>Heuristic Analysis Engine Configs</h5>
+              <pre><code>HAE_HOST</code> - The host of the HAE</pre>
+              <pre><code>HAE_PORT</code> - The port the HAE webhooks are listening on</pre>
+              <pre><code>HAE_SECRET</code> - Secret key used in communication between the HAE and node server</pre>
+              <h5>Encryption Configs &lpar;For API Keys&rpar;</h5>
+              <pre><code>AGE_IDENTITY</code> - Private AGE key used to decrypt- Should match identity used by the HAE</pre>
+              <pre><code>AGE_RECIPIENT</code> - Public AGE key used to encrypt</pre>
+              <h5>Mail Server Configs</h5>
+              <pre><code>USE_MAIL</code> - Whether to use external email alerts</pre>
+              <pre><code>MAIL_HOST</code> - Host of external mail server</pre>
+              <pre><code>MAIL_PORT</code> - Port of external mail service</pre>
+              <pre><code>MAIL_USERNAME</code> - Username of external mail server</pre>
+              <pre><code>MAIL_PASSWORD</code> - Password of external mail server</pre>
+              <pre><code>MAIL_USE_SSL</code> - Whether to use SSL for external emails </pre>
+              <pre><code>MAIL_ALLOW_SELF_SIGN</code> - Whether to allow self-signed SSL certs for the mail service</pre>
+              <pre><code>ALERT_EMAIL</code> - The email that should receive alerts</pre>
+
+              <h4 id="env-node-server">Heuristic Analysis Engine</h4>
+              <h5>General Configs</h5>
+              <pre><code>DATABASE_URL</code> - Login URL of the database</pre>
+              <pre><code>WEBHOOK_API_KEY</code> - Secret key used in communication between the HAE and node server</pre>
+              <pre><code>WEBHOOK_PORT</code> - The port the webhooks should listen on</pre>
+              <pre><code>NOTIFICATION_SERVER_URL</code> - URL of the node server</pre>
+              <pre><code>AGE_IDENTITY</code> - Private AGE key used to decrypt API keys in the database</pre>
+            </details>
+
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>2025 Watchdog HIDS</p>
+  </footer>
 </body>
-
 </html>
