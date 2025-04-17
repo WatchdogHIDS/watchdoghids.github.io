@@ -32,25 +32,24 @@
                 <source src="videos/central-server-tutorial.mp4" type="video/mp4">
                 Your browser does not support the video tag
               </video>
-
+              <h4 id="server-setup">Server Setup - Unified</h4>
               <p>
-                Inside the <code>node-server</code> directory, copy the <code>.env.example</code> file to <code>.env</code> and fill it with appropriate values.
+                As prerequisites, ensure you have Docker and Docker Compose installed on your system.
               </p>
               <p>
-                Inside the <code>analysis-engine</code> directory, create a <code>.env</code> file.
+                Inside the <code>node-server</code> and <code>analysis-engine</code> directories, create <code>.env</code> files using either the <code>.env.example</code> or by following the below documentation.
               </p>
               <p>
-                To run with a unified central server, change <code>DB_HOST</code> to <code>mariadb</code> and <code>HAE_HOST</code> to <code>rust-microservice</code>.
+                Then run: <code>docker-compose up --build -d</code>
               </p>
               <p>
-                If you would like email notifications, provide credentials for your desired mailserver. Then run:
+                By default a <code>root</code> user will be created with password <code>rootpassword</code>. This can be changed by changing line 188 in the <code>setup.sql</code> script.
               </p>
-              <pre><code>docker-compose up --build -d</code></pre>
               <p>
                 You can now register endpoints via the Watchdog UI Admin screen.
               </p>
               <p>
-                To reset the database, run either <code>db_reset.ps1</code> (Windows) or <code>db_reset.sh</code> (Linux).
+                To reset the database, run either <code>db_reset.ps1</code> (Windows) or <code>db_reset.sh</code> (Linux) and then rebuild the containers.
               </p>
             </details>
             
@@ -111,6 +110,7 @@
                 Edit the options as needed and then run <code>systemctl restart watchdog-endpoint</code> to apply changes.
               </p>
             </details>
+
             <!-- Windows Endpoint Section -->
             <details>
               <summary>Windows Endpoint</summary>
@@ -159,6 +159,46 @@
                 The service must be installed with administrative privileges. If the installation fails, check the Event Viewer (<code>eventvwr.msc</code>) for errors. If running from source, ensure that the .NET Runtime is installed.
               </p>
             </details>
+
+            <!-- .env  -->
+            <details>
+              <summary>Environment Configuration Files</summary>
+              <p>Some components of the Watchdog server can be configured using .env files. These are lists of the variable options and what they do</p>
+              <h4 id="env-node-server">Node Server</h4>
+              <h5>General Server Configs</h5>
+              <pre><code>PORT</code> - The port the node server should listen on</pre>
+              <pre><code>JWT_SECRET</code> - Secret key used for JWT authentication and signing</pre>
+              <h5>Database Configs</h5>
+              <pre><code>DB_HOST</code> - The host of the database</pre>
+              <pre><code>DB_USER</code> - The database username the server should use</pre>
+              <pre><code>DB_PASS</code> - The password of the database user specified</pre>
+              <pre><code>DB_NAME</code> - The name of the internal database containing the watchdog data</pre>
+              <h5>Heuristic Analysis Engine Configs</h5>
+              <pre><code>HAE_HOST</code> - The host of the HAE</pre>
+              <pre><code>HAE_PORT</code> - The port the HAE webhooks are listening on</pre>
+              <pre><code>HAE_SECRET</code> - Secret key used in communication between the HAE and node server</pre>
+              <h5>Encryption Configs &lpar;For API Keys&rpar;</h5>
+              <pre><code>AGE_IDENTITY</code> - Private AGE key used to decrypt- Should match identity used by the HAE</pre>
+              <pre><code>AGE_RECIPIENT</code> - Public AGE key used to encrypt</pre>
+              <h5>Mail Server Configs</h5>
+              <pre><code>USE_MAIL</code> - Whether to use external email alerts</pre>
+              <pre><code>MAIL_HOST</code> - Host of external mail server</pre>
+              <pre><code>MAIL_PORT</code> - Port of external mail service</pre>
+              <pre><code>MAIL_USERNAME</code> - Username of external mail server</pre>
+              <pre><code>MAIL_PASSWORD</code> - Password of external mail server</pre>
+              <pre><code>MAIL_USE_SSL</code> - Whether to use SSL for external emails </pre>
+              <pre><code>MAIL_ALLOW_SELF_SIGN</code> - Whether to allow self-signed SSL certs for the mail service</pre>
+              <pre><code>ALERT_EMAIL</code> - The email that should receive alerts</pre>
+
+              <h4 id="env-node-server">Heuristic Analysis Engine</h4>
+              <h5>General Configs</h5>
+              <pre><code>DATABASE_URL</code> - Login URL of the database</pre>
+              <pre><code>WEBHOOK_API_KEY</code> - Secret key used in communication between the HAE and node server</pre>
+              <pre><code>WEBHOOK_PORT</code> - The port the webhooks should listen on</pre>
+              <pre><code>NOTIFICATION_SERVER_URL</code> - URL of the node server</pre>
+              <pre><code>AGE_IDENTITY</code> - Private AGE key used to decrypt API keys in the database</pre>
+            </details>
+
           </div>
         </div>
       </article>
